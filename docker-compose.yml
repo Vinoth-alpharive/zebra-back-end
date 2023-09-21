@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+
+  zebra_back:
+    build:
+      dockerfile: "Dockerfile"
+      context: "."
+    container_name: zebra_back
+    restart: unless-stopped
+    networks:
+      - default
+
+networks:
+  default:
+    external:
+      name: Zebra-exchange
