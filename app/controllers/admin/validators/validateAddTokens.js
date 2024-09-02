@@ -26,6 +26,34 @@ const validateAddTokens = [
         .isEmpty()
         .withMessage('Please Enter Chain')
         .trim(),
+    check('factory_contract')
+        .exists()
+        .withMessage('factory_contract MISSING')
+        .not()
+        .isEmpty()
+        .withMessage('Please Enter factory_contract')
+        .trim(),
+    check('factory_Abi')
+        .exists()
+        .withMessage('factory_Abi MISSING')
+        .not()
+        .isEmpty()
+        .withMessage('Please Enter factory_Abi')
+        .trim(),
+    check('router_contract')
+        .exists()
+        .withMessage('router_contract MISSING')
+        .not()
+        .isEmpty()
+        .withMessage('Please Enter router_contract')
+        .trim(),
+    check('router_Abi')
+        .exists()
+        .withMessage('router_Abi MISSING')
+        .not()
+        .isEmpty()
+        .withMessage('Please Enter router_Abi')
+        .trim(),
     (req, res, next) => {
         validateResult(req, res, next)
     }

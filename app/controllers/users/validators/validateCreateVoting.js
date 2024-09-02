@@ -61,6 +61,20 @@ const validateCreateVoting = [
         .isEmpty()
         .withMessage('Please Enter End Time')
         .trim(),
+    check('startTimeStamp')
+        .exists()
+        .withMessage('startTimeStamp MISSING')
+        .not()
+        .isEmpty()
+        .withMessage('Please Enter Start Timestamp')
+        .trim(),
+    check('endTimeStamp')
+        .exists()
+        .withMessage('endTimeStamp MISSING')
+        .not()
+        .isEmpty()
+        .withMessage('Please Enter End Timestamp')
+        .trim(),
     check('Address')
         .exists()
         .withMessage('Address MISSING')

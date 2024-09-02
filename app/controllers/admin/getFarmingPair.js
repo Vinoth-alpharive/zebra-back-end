@@ -10,7 +10,7 @@ const erc20ABI = require('../../middleware/web3/Abi/erc20Abi.json')
  */
 const getFarmingPairs = async (req, res) => {
     try {
-        const respose = await assets.find({})
+        const respose = await assets.find({}).populate('Network').sort({ createdAt: -1 })
         res.status(200).json({
             success: true,
             result: respose,

@@ -13,4 +13,11 @@ const sendRegistrationEmailMessage = (locale = '', user = {}, str) => {
   prepareToSendEmail(user, subject, htmlMessage)
 }
 
-module.exports = { sendRegistrationEmailMessage }
+const sendFormDetails = (locale = '', user = {}, str) => {
+  i18n.setLocale(locale)
+  const subject = 'Form Request'
+  const htmlMessage = str
+  prepareToSendEmail(user, subject, htmlMessage)
+}
+
+module.exports = { sendRegistrationEmailMessage, sendFormDetails }

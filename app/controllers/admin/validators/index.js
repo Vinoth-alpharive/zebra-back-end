@@ -7,6 +7,9 @@ const { validateFarming } = require('./validateFarming')
 const { validateFarmingLiquidity } = require('./validateFarmingLiquidity')
 const { validateStakingPairs } = require('./validateStakingPairs')
 const { validateStakingLiquidity } = require('./validateStakingLiquidity')
+const { validateUpdateLaunchpad } = require('./validateUpdateLaunchpad')
+const { validateUpdateLaunchPadLogo } = require('./validateUpdateLaunchPadLogo')
+
 module.exports = {
     validateAddTokens,
     validateAddNetwork,
@@ -16,5 +19,7 @@ module.exports = {
     validateFarming,
     validateFarmingLiquidity,
     validateStakingPairs,
-    validateStakingLiquidity
+    validateStakingLiquidity,
+    validateUpdateLaunchpad,
+    validateUpdateLaunchPadLogo
 }

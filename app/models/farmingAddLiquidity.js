@@ -26,6 +26,13 @@ const farmingLiquidityPairSchema = new mongoose.Schema(
         ID: {
             type: Number,
             required: true
+        },
+        user_address: {
+            type: Array
+        },
+        totalLiquidity: {
+            type: Number,
+            default: 0
         }
     },
     {

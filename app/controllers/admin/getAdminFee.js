@@ -1,6 +1,7 @@
 const { matchedData } = require('express-validator')
 const { handleError } = require('../../middleware/utils')
 const assets = require('../../models/adminFee')
+const Mongoose = require('mongoose')
 /**
  * Get all items function called by route
  * @param {Object} req - request object
@@ -8,10 +9,13 @@ const assets = require('../../models/adminFee')
  */
 const getAdminFee = async (req, res) => {
     try {
-        const respose = await assets.find({})
+        const respose = await assets.aggregate([
+            { $match: { Network: Mongoose.Types.ObjectId(req.body.Network) } },
+        ])
+        // const respose = await assets.distinct("router_contract", "name1")
         res.status(200).json({
             success: true,
-            result: respose[0],
+            result: respose,
             message: 'Networks Fetched Successfully'
         })
 

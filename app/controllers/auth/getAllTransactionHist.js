@@ -18,14 +18,14 @@ const getTransactionHist = async (req, res) => {
                 message: "Transaction History",
             })
         } else if (req.pair && req.trade_at == "swap") {
-            const data = await trade.find({ Pair: req.pair, Trade_At: req.trade_at })
+            const data = await trade.find({ Pair: req.pair, Trade_At: req.trade_at , Network: req.Network })
             res.status(200).json({
                 success: true,
                 result: data,
                 message: "Data Found successfully",
             })
         } else if (req.pair && req.trade_at == "farming") {
-            const hist = await trade.find({ Pair: req.pair, Trade_At: req.trade_at })
+            const hist = await trade.find({ Pair: req.pair, Trade_At: req.trade_at , Network: req.Network})
             res.status(200).json({
                 success: true,
                 result: hist,
@@ -34,7 +34,8 @@ const getTransactionHist = async (req, res) => {
         } else if (req.pair && req.trade_at == "exchange") {
             var datas = {
                 Pair: req.pair,
-                Trade_At: req.trade_at
+                Trade_At: req.trade_at,
+                Network: req.Network
             }
             if (req.side === "buy") {
                 datas.Trade_type = "BUY"
@@ -50,21 +51,21 @@ const getTransactionHist = async (req, res) => {
             })
         }
         else if (req.trade_at == "exchange") {
-            const list = await trade.find({ Trade_At: req.trade_at })
+            const list = await trade.find({ Trade_At: req.trade_at , Network: req.Network })
             res.status(200).json({
                 success: true,
                 result: list,
                 message: "Data Found successfully",
             })
         } else if (req.trade_at == "farming") {
-            const list = await trade.find({ Trade_At: req.trade_at })
+            const list = await trade.find({ Trade_At: req.trade_at , Network: req.Network })
             res.status(200).json({
                 success: true,
                 result: list,
                 message: "Data Found successfully",
             })
         } else if (req.trade_at == "swap") {
-            const list = await trade.find({ Trade_At: req.trade_at })
+            const list = await trade.find({ Trade_At: req.trade_at , Network: req.Network})
             res.status(200).json({
                 success: true,
                 result: list,

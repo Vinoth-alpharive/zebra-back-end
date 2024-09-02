@@ -8,9 +8,9 @@ const mg = require('nodemailer-mailgun-transport')
  */
 const sendEmail = async (data = {}, callback) => {
   const auth = {
-    // host: process.env.SMTP_HOST,
-    // port: process.env.SMTP_PORT,
-    service: "sendinblue",
+    host: process.env.SMTP_HOST,
+    port: process.env.SMTP_PORT,
+    // service: "sendinblue",
     secure: false, // true for 465, false for other ports
     auth: {
       user: process.env.SMTP_USERNAME,

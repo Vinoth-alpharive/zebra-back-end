@@ -43,7 +43,23 @@ const PairSchema = new mongoose.Schema(
         },
         pair_symbol: {
             type: String
+        },
+        factory_contract: {
+            type: String
+        },
+        factory_Abi: {
+            type: Array
+        },
+        router_contract: {
+            type: String
+        },
+        router_Abi: {
+            type: Array
+        },
+        isVisible: {
+            type: Boolean
         }
+
     },
     {
         versionKey: false,

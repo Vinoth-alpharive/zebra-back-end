@@ -3097,7 +3097,7 @@ abstract contract ERC20Burnable is Context, ERC20 {
 
 // File: StDMO.sol
 
-pragma solidity 0.8.17;
+pragma solidity ^0.8.17;
 
 contract StDMO is ERC20, ERC20Burnable, Ownable {
     constructor() ERC20("stDMO", "stDMO") {}
@@ -3318,7 +3318,7 @@ library SafeERC20 {
 
 // File: BaseStaking.sol
 
-pragma solidity 0.8.17;
+pragma solidity ^0.8.17;
 
 contract BaseStaking is Initializable, AccessControl, ReentrancyGuard {
     using SafeERC20 for IERC20;
@@ -3579,7 +3579,7 @@ contract BaseStaking is Initializable, AccessControl, ReentrancyGuard {
 
 // File: uniswapStaking.sol
 
-pragma solidity 0.8.17;
+pragma solidity ^0.8.17;
 
 contract DiMoStaking is BaseStaking {
     using SafeERC20 for IERC20;

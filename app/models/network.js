@@ -10,6 +10,13 @@ const NetworkSchema = new mongoose.Schema(
         rpc_Url: {
             type: String,
             required: true
+        },
+        chainId: {
+            type: Number,
+            required: true
+        },
+        isVisible: {
+            type: Boolean
         }
     },
     {

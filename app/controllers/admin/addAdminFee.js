@@ -11,7 +11,7 @@ const addAdminFee = async (req, res) => {
         req = matchedData(req)
         const respose = await assets.find()
         if (respose.length > 0) {
-            const response = await assets.findByIdAndUpdate({ _id: respose[0]._id }, req)
+            const response = await assets.findByIdAndUpdate({ _id: req._id }, { Address: req.Address, Percentage: req.Percentage })
             res.status(200).json({
                 success: true,
                 result: response,

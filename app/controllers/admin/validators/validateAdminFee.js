@@ -5,6 +5,13 @@ const { check } = require('express-validator')
  * Validates get item request
  */
 const validateAdminFee = [
+    check('_id')
+        .exists()
+        .withMessage('_id MISSING')
+        .not()
+        .isEmpty()
+        .withMessage('Please Enter _id')
+        .trim(),
     check('Address')
         .exists()
         .withMessage('Address MISSING')

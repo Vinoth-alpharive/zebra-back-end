@@ -25,7 +25,15 @@ const {
     stakingPairs,
     stakingAddPairs,
     getStakingPairs,
-    stakingAddLiquidity
+    stakingAddLiquidity,
+    FactoryContract,
+    getFactoryContract,
+    RouterContract,
+    removePair,
+    removeNetwork,
+    getNetworkFull,
+    updateLaunchPadStatus,
+    updateLaunchpadLogo
 } = require('../controllers/admin')
 const {
     validateAddTokens,
@@ -36,7 +44,9 @@ const {
     validateFarming,
     validateFarmingLiquidity,
     validateStakingPairs,
-    validateStakingLiquidity
+    validateStakingLiquidity,
+    validateUpdateLaunchpad,
+    validateUpdateLaunchPadLogo
 } = require('../controllers/admin/validators')
 
 const { roleAuthorization } = require('../controllers/auth')
@@ -51,12 +61,78 @@ router.post(
 )
 
 router.post(
+    '/updateLaunchPadStatus',
+    // requireAuth,
+    // roleAuthorization(['admin']),
+    trimRequest.all,
+    validateUpdateLaunchpad,
+    updateLaunchPadStatus
+)
+
+router.post(
+    '/updateLaunchpadLogo',
+    // requireAuth,
+    // roleAuthorization(['admin']),
+    trimRequest.all,
+    validateUpdateLaunchPadLogo,
+    updateLaunchpadLogo
+)
+
+
+router.post(
     '/farmingPairs',
     // requireAuth,
     // roleAuthorization(['admin']),
     trimRequest.all,
     validateFarming,
     farmingPairs
+)
+
+router.post(
+    '/removePair',
+    // requireAuth,
+    // roleAuthorization(['admin']),
+    trimRequest.all,
+    removePair
+)
+
+router.post(
+    '/removeNetwork',
+    // requireAuth,
+    // roleAuthorization(['admin']),
+    trimRequest.all,
+    removeNetwork
+)
+
+router.post(
+    '/getNetworkFull',
+    // requireAuth,
+    // roleAuthorization(['admin']),
+    trimRequest.all,
+    getNetworkFull
+)
+
+router.post(
+    '/FactoryContract',
+    // requireAuth,
+    // roleAuthorization(['admin']),
+    trimRequest.all,
+    FactoryContract
+)
+router.post(
+    '/getFactoryContract',
+    // requireAuth,
+    // roleAuthorization(['admin']),
+    trimRequest.all,
+    getFactoryContract
+)
+
+router.post(
+    '/RouterContract',
+    // requireAuth,
+    // roleAuthorization(['admin']),
+    trimRequest.all,
+    RouterContract
 )
 
 router.post(
@@ -68,13 +144,15 @@ router.post(
     stakingPairs
 )
 
-router.get(
-    '/stakingPairs',
+
+router.post(
+    '/getstakingPairs',
     // requireAuth,
     // roleAuthorization(['admin']),
     trimRequest.all,
     getStakingPairs
 )
+
 
 router.post(
     '/stakingAddLiquidity',
@@ -147,7 +225,7 @@ router.post(
     addAdminFee
 )
 
-router.get(
+router.post(
     '/getAdminFee',
     // requireAuth,
     // roleAuthorization(['admin']),
@@ -180,6 +258,14 @@ router.get(
 )
 
 router.get(
+    '/getAssetsFull',
+    // requireAuth,
+    // roleAuthorization(['admin']),
+    trimRequest.all,
+    getTokens
+)
+
+router.post(
     '/getAssetsPair',
     // requireAuth,
     // roleAuthorization(['admin']),

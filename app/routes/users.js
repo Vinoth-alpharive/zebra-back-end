@@ -8,11 +8,6 @@ const requireAuth = passport.authenticate('jwt', {
 })
 const trimRequest = require('trim-request')
 
-const ejs = require('ejs')
-const path = require('path')
-
-
-
 const { roleAuthorization } = require('../controllers/auth')
 
 const {
@@ -27,7 +22,14 @@ const {
   creatingVoting,
   getVotings,
   voting,
-  getVotesById
+  getVotesById,
+  getFarmingPairs,
+  formSubmit,
+  createLaunchPad,
+  getLaunchPad,
+  updateLaunchPad,
+  laucnhtransaction,
+  launchpadhistory
 } = require('../controllers/users')
 
 
@@ -40,7 +42,8 @@ const {
   validateCreateTrade,
   validateTradeHistory,
   validateCreateVoting,
-  validateVoting
+  validateVoting,
+  validateCreateLaunchpad
 } = require('../controllers/users/validators')
 
 const { validateRegister, validateLogin } = require('../controllers/auth/validators')
@@ -61,6 +64,16 @@ router.post('/login', trimRequest.all, validateLogin, login)
 
 
 router.post('/createKyc', requireAuth, roleAuthorization(['user']), trimRequest.all, validateCreateKYC, createKYC)
+router.post('/createLaunchPad', trimRequest.all, validateCreateLaunchpad, createLaunchPad)
+
+/*launchpadtransaction*/
+
+router.post('/Launchpadtransaction',laucnhtransaction)
+
+
+/*launchpadhistory*/
+
+router.post('/LaunchpadHistory',launchpadhistory)
 
 router.post(
   '/createTrade',
@@ -72,12 +85,45 @@ router.post(
 )
 
 router.post(
+  '/formSubmit',
+  // requireAuth,
+  // roleAuthorization(['user']),
+  trimRequest.all,
+  // validateformSubmitd,
+  formSubmit
+)
+
+router.post(
   '/Vote',
   // requireAuth,
   // roleAuthorization(['user']),
   trimRequest.all,
   validateVoting,
   voting
+)
+
+router.post(
+  '/getLaunchPad',
+  // requireAuth,
+  // roleAuthorization(['user']),
+  trimRequest.all,
+  getLaunchPad
+)
+
+router.post(
+  '/updatelaunchPad',
+  // requireAuth,
+  // roleAuthorization(['admin']),
+  trimRequest.all,
+  updateLaunchPad
+)
+
+router.post(
+  '/getFarmingPairs',
+  // requireAuth,
+  // roleAuthorization(['user']),
+  trimRequest.all,
+  getFarmingPairs
 )
 
 router.post(

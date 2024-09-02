@@ -7,6 +7,7 @@ const { validateCreateTrade } = require('./validateCreateTrade')
 const { validateTradeHistory } = require('./validateTradeHistory')
 const { validateCreateVoting } = require('./validateCreateVoting')
 const { validateVoting } = require('./validateVoting')
+const { validateCreateLaunchpad } = require('./validateCreateLaunchpad')
 module.exports = {
   validateCreateUser,
   validateDeleteUser,
@@ -16,5 +17,6 @@ module.exports = {
   validateCreateTrade,
   validateTradeHistory,
   validateCreateVoting,
-  validateVoting
+  validateVoting,
+  validateCreateLaunchpad
 }

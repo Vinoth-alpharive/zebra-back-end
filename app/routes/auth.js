@@ -24,7 +24,9 @@ const {
   verifyKyc,
   getTransactionHist,
   addLiquidity,
-  stakingHistory
+  stakingHistory,
+  tradingViewData,
+  forms
 } = require('../controllers/auth')
 
 const {
@@ -55,6 +57,7 @@ const {
  */
 
 router.post('/check', checkapi)
+router.post('/tradingViewData', tradingViewData)
 
 router.post('/login', trimRequest.all, validateLogin, loginByAdmin)
 
@@ -172,6 +175,13 @@ router.post(
   // roleAuthorization(['user', 'admin']),
   trimRequest.all,
   stakingHistory
+)
+router.post(
+  '/forms',
+  // requireAuth,
+  // roleAuthorization(['user', 'admin']),
+  trimRequest.all,
+  forms
 )
 
 /*

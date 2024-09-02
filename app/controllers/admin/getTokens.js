@@ -10,7 +10,7 @@ const erc20ABI = require('../../middleware/web3/Abi/erc20Abi.json')
  */
 const getTokens = async (req, res) => {
     try {
-        const response = await assets.find({status: true}).populate({path: 'network'})
+        const response = await assets.find({ status: true }).populate('network').sort({ createdAt: -1 })
         res.status(200).json({
             success: true,
             result: response,

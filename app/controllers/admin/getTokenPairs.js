@@ -10,12 +10,21 @@ const erc20ABI = require('../../middleware/web3/Abi/erc20Abi.json')
  */
 const getTokenPairs = async (req, res) => {
     try {
-        const response = await assets.find()
-        res.status(200).json({
-            success: true,
-            result: response,
-            message: 'All Pairs List'
-        })
+        if (req.body.chain) {
+            const response = await assets.find({ network: req.body.chain, isVisible: true })
+            res.status(200).json({
+                success: true,
+                result: response,
+                message: 'All Pairs List'
+            })
+        } else {
+            res.status(400).json({
+                success: false,
+                result: null,
+                message: 'Please Enter Chain'
+            })
+        }
+
     } catch (error) {
         handleError(res, error)
     }

@@ -10,7 +10,7 @@ const prepareToSendEmail = (user = {}, subject = '', htmlMessage = '') => {
   user = {
     name: user.name,
     email: user.email,
-    verification: user.verification
+    verification: user?.verification
   }
   const data = {
     user,

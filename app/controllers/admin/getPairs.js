@@ -12,14 +12,27 @@ const getPairs = async (req, res) => {
     try {
         if (req.body.id) {
             if (req.body.id === "all") {
-                const respose = await assets.find({ status: "true" })
+                // const respose = await assets.find({ status: "true", isVisible: true }).populate('network')
+                const response = await assets.aggregate([
+                    { $match: { status: "true", isVisible: true } },
+                    {
+                        $lookup: {
+                            from: "networks",
+                            localField: "network",
+                            foreignField: "_id",
+                            as: "network"
+                        }
+                    },
+                    { $match: { 'network.isVisible': true } },
+                    { $unwind: '$network' }
+                ])
                 res.status(200).json({
                     success: true,
-                    result: respose,
+                    result: response,
                     message: 'Pairs Fetched Successfully'
                 })
             } else {
-                const respose = await assets.find({ status: "true", network: req.body.id })
+                const respose = await assets.find({ status: "true", network: req.body.id, isVisible: true }).populate('network')
                 const data = []
                 res.status(200).json({
                     success: true,

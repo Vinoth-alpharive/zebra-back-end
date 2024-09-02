@@ -11,7 +11,9 @@ const erc20ABI = require('../../middleware/web3/Abi/erc20Abi.json')
 const addNetwork = async (req, res) => {
     try {
         req = matchedData(req)
+
         const data = await assets.findOne({ rpc_Url: req.rpc_Url })
+
         if (data) {
             res.status(200).json({
                 success: false,
@@ -19,6 +21,11 @@ const addNetwork = async (req, res) => {
                 message: 'Network Already Added'
             })
         } else {
+            const web3 = new Web3(
+                new Web3.providers.HttpProvider(req.rpc_Url)
+            )
+            const chainId = await web3.eth.getChainId()
+            req.chainId = chainId
             const respose = await assets.create(req)
             res.status(200).json({
                 success: true,

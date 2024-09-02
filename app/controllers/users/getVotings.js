@@ -9,14 +9,15 @@ const assets = require('../../models/voting')
 const getVotings = async (req, res) => {
     try {
         if (req.body.id) {
-            const data = new Date().getTime();
+            // const data = new Date().getTime();
+            // console.log("🚀 ~ getVotings ~ data:", data)
             var respose
             if (req.body.id === "all") {
-                respose = await assets.find({ startTimeStamp: { $lt: data }, endTimeStamp: { $gt: data } })
+                respose = await assets.find({ startTimeStamp: { $lt: req.body.data }, endTimeStamp: { $gt: req.body.data } })
             } else if (req.body.id === "soon") {
-                respose = await assets.find({ startTimeStamp: { $gt: data } })
+                respose = await assets.find({ startTimeStamp: { $gt: req.body.data } })
             } else if (req.body.id === "closed") {
-                respose = await assets.find({ endTimeStamp: { $lt: data } })
+                respose = await assets.find({ endTimeStamp: { $lt: req.body.data } })
             }
             // const respose = await assets.aggregate([
             //     { $match: { $and: [{ startTimeStamp: { $lt: data } }] } }

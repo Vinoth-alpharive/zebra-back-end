@@ -14,6 +14,13 @@ const { creatingVoting } = require('./creatingVoting')
 const { getVotings } = require('./getVotings')
 const { voting } = require('./voting')
 const { getVotesById } = require('./getVotesById')
+const { getFarmingPairs } = require('./getFarmingPairs')
+const { formSubmit } = require('./formSubmit')
+const { createLaunchPad } = require('./createLaunchPad')
+const { getLaunchPad } = require('./getLaunchPad')
+const { updateLaunchPad } = require('./updateLaunchPad')
+const { laucnhtransaction } = require('./laucnhtransaction')
+const {launchpadhistory } = require('./launchpadhistory')
 
 module.exports = {
   createUser,
@@ -31,5 +38,12 @@ module.exports = {
   creatingVoting,
   getVotings,
   voting,
-  getVotesById
+  getVotesById,
+  getFarmingPairs,
+  formSubmit,
+  createLaunchPad,
+  getLaunchPad,
+  updateLaunchPad,
+  laucnhtransaction,
+  launchpadhistory
 }

@@ -12,6 +12,10 @@ const TradeSchema = new mongoose.Schema(
             type: String,
             required: true
         },
+        amount: {
+            type: String
+            // required: true
+        },
         Price: {
             type: String,
             required: true
@@ -32,14 +36,16 @@ const TradeSchema = new mongoose.Schema(
             type: String,
             required: true
         },
+        Network: {
+            type: String,
+        },
         Trade_id: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'stakingPairs',
-            default: ""
         },
         status: {
             type: Number,
-            default: 0
+            default: 1
         }
     },
     {

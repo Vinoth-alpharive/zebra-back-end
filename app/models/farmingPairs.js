@@ -20,11 +20,11 @@ const farmingPairSchema = new mongoose.Schema(
             required: true
         },
         Start_Time: {
-            type: String,
+            type: Number,
             required: true
         },
         End_Time: {
-            type: String,
+            type: Number,
             required: true
         },
         Network: {

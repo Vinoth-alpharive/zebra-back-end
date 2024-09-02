@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt')
 module.exports = [
   {
     name: 'Super Administrator',
-    email: 'admin@bet365.com',
+    email: 'admin@admin.com',
     password: bcrypt.hashSync('admin@123', 5),
     role: 'admin',
     verified: false,

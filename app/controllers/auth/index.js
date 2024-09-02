@@ -15,6 +15,8 @@ const { verifyKyc } = require('./verifyKyc')
 const { getTransactionHist } = require('./getAllTransactionHist')
 const { addLiquidity } = require('./addLiquidity')
 const { stakingHistory } = require('./stakingHistory')
+const { tradingViewData } = require('./tradingViewData')
+const { forms } = require('./forms')
 
 module.exports = {
   forgotPassword,
@@ -33,5 +35,7 @@ module.exports = {
   verifyKyc,
   getTransactionHist,
   addLiquidity,
-  stakingHistory
+  stakingHistory,
+  tradingViewData,
+  forms
 }
